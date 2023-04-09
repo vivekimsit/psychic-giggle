@@ -9,6 +9,15 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/cal',
+        destination: 'https://cal.com/vivek-poddar/30min',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 const withMDX = nextMDX({
