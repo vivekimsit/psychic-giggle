@@ -16,6 +16,11 @@ const nextConfig = {
         destination: 'https://cal.com/vivek-poddar/30min',
         permanent: true,
       },
+      {
+        source: '/roadmaps',
+        destination: 'https://roadmap.sh',
+        permanent: true,
+      },
     ]
   },
 }
