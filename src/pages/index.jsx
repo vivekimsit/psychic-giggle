@@ -11,7 +11,6 @@ import {
   InstagramIcon,
   LinkedInIcon,
   TwitterIcon,
-  CalendarIcon,
 } from '@/components/SocialIcons'
 import logoSalesforce from '@/images/logos/salesforce.jpeg'
 import logoEBI from '@/images/logos/ebi.jpeg'
