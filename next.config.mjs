@@ -26,7 +26,7 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/courses/:path*',
+        source: '/relearn/:path*',
         destination: 'https://sys-design-course.vercel.app/:path*',
       },
     ]
