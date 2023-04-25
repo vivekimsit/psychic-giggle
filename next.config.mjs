@@ -24,12 +24,20 @@ const nextConfig = {
     ]
   },
   async rewrites() {
-    return [
-      {
-        source: '/relearn/:path*',
-        destination: 'https://sys-design-course.vercel.app/:path*',
-      },
-    ]
+    return {
+      fallback: [
+        {
+          source: '/relearn/:path*',
+          destination: 'https://sys-design-course.vercel.app/:path*',
+        },
+      ],
+    }
+    // return [
+    //   {
+    //     source: '/relearn/:path*',
+    //     destination: 'https://sys-design-course.vercel.app/:path*',
+    //   },
+    // ]
   },
 }
 
