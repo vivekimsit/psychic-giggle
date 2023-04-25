@@ -14,7 +14,7 @@ const projects = [
     name: 'Relearn',
     description:
       'Relearn is a course that teaches you to build a strong foundation in web development and design systems that can scale.',
-    link: { href: 'https://sys-design-course.vercel.app/', label: '/relearn' },
+    link: { href: '/relearn', label: '/relearn' },
     logo: logoPlanetaria,
   },
   // {
