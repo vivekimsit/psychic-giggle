@@ -27,20 +27,7 @@ const nextConfig = {
     ]
   },
   async rewrites() {
-    // return {
-    //   fallback: [
-    //     {
-    //       source: '/relearn/:path*',
-    //       // destination: 'https://sys-design-course.vercel.app/:path*',
-    //       destination: 'https://bright-kringle-122bbb.netlify.app/:path*',
-    //     },
-    //   ],
-    // }
     return [
-      {
-        source: '/_next/image(.*)',
-        destination: '/_next/image$1',
-      },
       {
         source: '/relearn/:path*',
         destination: 'https://bright-kringle-122bbb.netlify.app/:path*',
