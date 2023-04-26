@@ -9,6 +9,9 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
   },
+  images: {
+    domains: ['bright-kringle-122bbb.netlify.app'],
+  },
   async redirects() {
     return [
       {
