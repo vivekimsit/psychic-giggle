@@ -35,11 +35,8 @@ const nextConfig = {
     // }
     return [
       {
-        source: '/_next/image*',
-        destination: '/_next/image*',
-        headers: {
-          'Cache-Control': 'public, max-age=31536000, immutable',
-        },
+        source: '/_next/image(.*)',
+        destination: '/_next/image$1',
       },
       {
         source: '/relearn/:path*',
