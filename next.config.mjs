@@ -35,6 +35,13 @@ const nextConfig = {
     // }
     return [
       {
+        source: '/_next/image*',
+        destination: '/_next/image*',
+        headers: {
+          'Cache-Control': 'public, max-age=31536000, immutable',
+        },
+      },
+      {
         source: '/relearn/:path*',
         destination: 'https://bright-kringle-122bbb.netlify.app/:path*',
       },
