@@ -66,11 +66,11 @@ export default function About() {
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                Hey there! I'm Vivek Poddar, your friendly neighborhood techie
-                currently making magic happen at Salesforce in sunny Gurugram,
-                India. While I may not be Spiderman, I do spend my days spinning
-                webs of a different kind, mastering the art of full-stack web
-                development and agile application design.
+                Hey there! I{"'"}m Vivek Poddar, your friendly neighborhood
+                techie currently making magic happen at Salesforce in sunny
+                Gurugram, India. While I may not be Spiderman, I do spend my
+                days spinning webs of a different kind, mastering the art of
+                full-stack web development and agile application design.
               </p>
 
               <p>
@@ -95,24 +95,24 @@ export default function About() {
               </p>
 
               <p>
-                Today, you'll find me at Salesforce, leading as a Member of
+                Today, you{"'"}ll find me at Salesforce, leading as a Member of
                 Technical Staff. From navigating complex code to brainstorming
-                the next big thing in tech, there's never a dull moment.
+                the next big thing in tech, there{"'"}s never a dull moment.
               </p>
 
               <p>
-                When I'm not living my tech life, I'm here on this blog, sharing
-                my experiences and hopefully making the world of tech a bit less
-                daunting and a lot more fun for you. If you've ever wondered
-                what the life of a software engineer looks like or you're
-                curious about the latest in tech trends, you've come to the
-                right place.
+                When I{"'"}m not living my tech life, I{"'"}m here on this blog,
+                sharing my experiences and hopefully making the world of tech a
+                bit less daunting and a lot more fun for you. If you{"'"}ve ever
+                wondered what the life of a software engineer looks like or you
+                {"'"}re curious about the latest in tech trends, you{"'"}ve come
+                to the right place.
               </p>
 
               <p>
                 So grab a cup of coffee, sit back, and enjoy the ride. Feel free
-                to drop a comment, ask a question, or just say hello. Here's to
-                our tech journey together! Cheers!
+                to drop a comment, ask a question, or just say hello. Here{"'"}s
+                to our tech journey together! Cheers!
               </p>
 
               <i className="mt-8 block text-sm">
