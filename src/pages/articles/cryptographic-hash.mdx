@@ -1,0 +1,83 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const meta = {
+  author: 'Vivek Poddar',
+  date: '2023-02-21',
+  title: 'Cryptographic hash',
+  description:
+    'Dive into the world of cryptographic hash functions, exploring their key properties, applications in cybersecurity, and understanding six of the most widely used hash functions.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+# Cryptographic Hash Functions: A Deep Dive
+
+A cryptographic hash function is a specific type of hash function that has numerous properties making it ideal for cryptography. These functions take an input, or a 'message', and return a fixed-size string of bytes, typically a 'digest', unique to each unique input.
+
+## Key Properties of Cryptographic Hash Functions
+
+Cryptographic hash functions come with several key properties:
+
+**Deterministic**: For any given input, the output (hash) is always the same, ensuring identical results regardless of when you hash a specific message.
+
+**Fixed Output Length**: Regardless of the size of the input data, the hash output length remains constant. For instance, the SHA-256 hashing algorithm produces a 256 bits long hash, irrespective of the input size.
+
+**Preimage Resistance**: It's computationally unfeasible to retrieve the original input value from the hash output, making it impossible to work backward from the hash to the original data.
+
+**Small Changes, Big Impact**: Any minor alteration to the input data drastically changes the hash. This property is often referred to as the "avalanche effect."
+
+**Collision Resistance**: It is highly unlikely (but not impossible) that two different inputs will yield the same hash output. The vast number of possible hash outputs from a robust cryptographic hash function makes the chances of a "collision" (two different inputs producing the same hash) astronomically small.
+
+These properties make cryptographic hashes indispensable in various cybersecurity applications.
+
+## Cryptographic Hashes in Action
+
+Cryptographic hashes find uses in password storage, data integrity verification, digital signatures, and in the underpinning technology of blockchains. In a blockchain, the hash of each block contains the hash of the previous block, creating a verifiable chain of blocks back to the first block. This process makes any tampering with blockchain data highly challenging as it would necessitate the recalculation of the hashes of all subsequent blocks.
+
+## An Overview of Common Cryptographic Hash Functions
+
+Here's more detailed information about each of the cryptographic hash functions:
+
+### MD5 (Message Digest Algorithm 5)
+
+- **Invented**: 1991 by Ronald Rivest
+- **Summary**: MD5 generates a 128-bit hash value and was initially intended for cryptographic security. However, it was found to be prone to hash collisions—a situation where two different inputs yield the same hash output—which makes it insecure for functions like SSL certificates or encryption that require high uniqueness.
+- **Output**: 128-bit hash value, typically represented as a 32-character hexadecimal number.
+
+### SHA-1 (Secure Hash Algorithm 1)
+
+- **Invented**: 1995 by the National Security Agency (NSA)
+- **Summary**: SHA-1 generates a 160-bit hash value. Like MD5, it was widely used, but vulnerabilities to collision attacks—where two different inputs can lead to the same hash output—rendered it insecure for most uses.
+- **Output**: 160-bit hash value, usually displayed as a 40-digit hexadecimal number.
+
+### SHA-2 (Secure Hash Algorithm 2)
+
+- **Invented**: 2001 by the National Security Agency (NSA)
+- **Summary**: SHA-2 is a set of hash functions (including SHA-256) now in wide use, offering improved security over SHA-1. SHA-2 algorithms are currently considered secure and find uses in many contexts, including TLS and SSL, PGP, SSH, IPsec, and cryptocurrencies like Bitcoin.
+- **Output**: Hash value lengths can be 224, 256, 384, 512, 512/224, 512/256 bits, depending on the specific algorithm.
+
+### SHA-3 (Secure Hash Algorithm 3)
+
+- **Invented**: Standardized in 2015, developed by Guido Bertoni, Joan Daemen, Michaël Peeters, and Gilles Van Assche.
+- **Summary**: SHA-3 is the winner of the NIST hash function competition and a successor to SHA-2. It's designed to be faster and more efficient than SHA-2 while providing a comparable level of security.
+- **Output**: Like SHA-2, SHA-3 can produce hash values of various lengths (224, 256, 384, 512 bits).
+
+### Blake2
+
+- **Invented**: 2012 by Jean-Philippe Aumasson, Samuel Neves, Zooko Wilcox-O'Hearn, and Christian Winnerlein.
+- **Summary**: Blake2 is a cryptographic hash function faster than MD5, SHA-1, SHA-2, and SHA-3, yet is as secure as the latest standard, SHA-3. It's especially beneficial for systems with low resources, like embedded systems.
+- **Output**: It can produce hash values of varying lengths (up to 512 bits).
+
+### Whirlpool
+
+- **Invented**: 2000 by Vincent Rijmen and Paulo S. L. M. Barreto.
+- **Summary**: Whirlpool is a cryptographic hash function that produces a 512-bit hash. It was designed to provide strong and secure protection against known forms of cryptanalytic attack.
+- **Output**: 512-bit hash value.
+
+## Summary
+
+In this article, we dove into the world of cryptographic hash functions. We explored their crucial role in maintaining data integrity, especially significant in the realm of blockchain technology. We delved into their key properties, which include determinism, fixed output length, preimage resistance, and the sensitivity to even the minutest changes in input, and their strong collision resistance.
+
+Moreover, we learned about six well-known cryptographic hash functions: MD5, SHA-1, SHA-2, SHA-3, Blake2, and Whirlpool. For each, we explored their year of invention, inventors, salient features, and the type of output they generate.
+
+This in-depth knowledge about cryptographic hash functions equips us with a robust understanding of how data security and unique data identification are achieved in the digital world. It's a vital understanding as we continue to interact with an increasingly digitized environment where data integrity is of paramount importance.
