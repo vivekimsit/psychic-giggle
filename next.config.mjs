@@ -24,6 +24,12 @@ const nextConfig = {
         destination: 'https://roadmap.sh',
         permanent: true,
       },
+      {
+        source: '/resume',
+        destination:
+          'https://drive.google.com/file/d/0ByYl6uQ2fXrReks3dXkzWW9CcTg/view?resourcekey=0-iTel91Y_OYVEZgd3cg_NKw',
+        permanent: true,
+      },
     ]
   },
   async rewrites() {
