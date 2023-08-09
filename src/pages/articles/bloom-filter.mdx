@@ -1,0 +1,49 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import sievePng from '../../../src/images/photos/golden_sieve.png'
+
+export const meta = {
+  author: 'Vivek Poddar',
+  date: '2023-08-08',
+  title: 'Bloom Filters',
+  description:
+    'How do you swiftly determine if a URL is in your database without checking the entire list? Welcome to the ingenious world of Bloom filters. ',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+<Image src={sievePng} alt="Golden Sieve" />
+
+Imagine you're a network router, constantly bombarded with a barrage of data. How do you quickly decide what to forward and what to drop? Or, picture yourself as a search engine trying to avoid the costly operation of disk lookups. How do you swiftly determine if a URL is in your database without checking the entire list? Welcome to the ingenious world of Bloom filters. These clever data structures help in such situations, allowing systems to rapidly and efficiently make these decisions, albeit with the occasional hiccup of a false positive.
+
+This is where Bloom filters come into play. They offer a way to check whether an element is possibly in the set (although with a small probability of error), using much less memory and computational resources than other data structures like hash tables.
+
+<h2>Hash Tables</h2>
+
+> A hash table is a data structure that uses hash functions to map keys to values, allowing for efficient insertion, deletion, and retrieval operations.
+
+Now, you might ask, why not use a hash table? Hash tables are fantastic data structures that allow you to store and retrieve items very quickly. However, they aren't without their limitations:
+
+**Memory Usage**: Hash tables store every single element that gets added to them. If you're dealing with a large set of data, this can quickly use up a lot of memory. In contrast, Bloom filters use significantly less memory because they don't store the elements themselves - only whether or not an element is likely in the set.
+
+**Speed**: Hash tables can experience performance slowdowns due to collisions (when two different keys hash to the same index). These collisions require extra handling and can slow down lookups. Bloom filters, by using multiple hash functions and allowing for a small rate of false positives, can often perform lookups more quickly.
+
+**Existence, not Retrieval**: Hash tables are great when you want to store and retrieve data, but in cases where you're only interested in whether or not an element is in the set, a hash table can be overkill. Bloom filters are designed specifically for this task - quickly and efficiently determining set membership.
+
+Therefore, while hash tables are a powerful tool in many situations, Bloom filters offer unique advantages when it comes to quickly and efficiently checking set membership in situations where a small probability of error is acceptable.
+
+## Bloom Filter to the rescue!
+
+**Space-Efficiency**: One of the main attractions of Bloom filters is their space efficiency. Unlike other data structures, Bloom filters do not store the elements themselves. Instead, they use a bit array, which is an array of 1s and 0s. Each bit in the array represents the possibility of an element being in the set. Therefore, a Bloom filter uses significantly less memory than other data structures, such as hash tables or linked lists, especially when dealing with large data sets.
+
+**Number of Hash Functions**: A Bloom filter uses multiple independent hash functions, each of which maps the input data (the elements you want to add to the set) to one of the positions in the bit array. The number of hash functions used is a key factor in the performance of a Bloom filter. Using more hash functions increases the accuracy of the Bloom filter (reduces the probability of false positives) but also requires more computational resources and fills up the bit array faster, which can lead to a higher probability of false positives. Conversely, using fewer hash functions reduces the computational load and slows the filling of the bit array but also decreases the accuracy. Therefore, there's a balance to be struck between the number of hash functions used, the speed of operations, and the rate of false positives.
+
+**False Positives**: One unique aspect of Bloom filters is that they allow for a certain rate of false positives. This means that sometimes, when you query whether an element is in the set, the Bloom filter might indicate that it is, even though it isn't (hence the 'false positive'). The rate of false positives depends on the size of the bit array and the number of hash functions used. Increasing the size of the bit array and optimizing the number of hash functions can reduce the probability of false positives.
+
+**No False Negatives**: While Bloom filters may sometimes yield false positives, they will never yield false negatives. This means that if an element is in the set, the Bloom filter will always indicate that it is in the set.
+
+**Irreversibility and Deletions**: Once a bit has been set to 1 in the Bloom filter, it cannot be reversed back to 0. This means that Bloom filters do not support deletions (without additional modifications), because you can't tell which hash functions put a particular bit to 1, and thus can't delete an element without potentially affecting other elements. This property makes Bloom filters suitable for applications where the data set is relatively static.
+
+## References
+
+- [Space-Time Trade-offs in Hash Coding with Allowable Errors](https://dl.acm.org/doi/pdf/10.1145/362686.362692)

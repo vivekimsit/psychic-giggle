@@ -1,0 +1,33 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import chessboardPNG from '../../../src/images/photos/chessboard.png'
+
+export const meta = {
+  author: 'Vivek Poddar',
+  date: '2023-08-08',
+  title: 'Bit array',
+  description:
+    "A bit array (also known as a bitmap, bitset, bit vector, or bit string) is a simple data structure that efficiently stores binary data. It's essentially an array of bits, where each bit represents a boolean value: either 0 or 1.",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+<Image src={chessboardPNG} alt="chessboard" />
+
+This data structure is highly efficient in terms of storage because it only needs one bit of memory for each stored element. It's often used when you need to quickly look up whether an element is present in a set, especially when that set is relatively static and contains a large number of elements. It's also the backbone of the Bloom filter data structure.
+
+For instance, consider an array of size 8 (for simplicity's sake). Initially, all bits are set to 0:
+
+```javascript
+Bit Array: 00000000
+```
+
+If we add elements corresponding to the 2nd and 5th indices to our set, we would set those bits to 1:
+
+```javascript
+Bit Array: 01001000
+```
+
+In this bit array, the 2nd and 5th bits are set to 1, indicating that elements corresponding to those indices are in the set, while the rest of the bits are set to 0, indicating that elements corresponding to those indices are not in the set.
+
+It's important to note that a bit array itself doesn't store the actual elements of the set. It just indicates whether an element corresponding to a certain index is present or not. The index is typically computed using a hash function.
