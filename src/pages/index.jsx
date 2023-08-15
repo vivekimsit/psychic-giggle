@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,6 +18,7 @@ import logoSalesforce from '@/images/logos/salesforce.jpeg'
 import logoEBI from '@/images/logos/ebi.jpeg'
 import logoGoogle from '@/images/logos/google.jpeg'
 import logoAmazon from '@/images/logos/amazon.jpg'
+import logoSpotify from '@/images/logos/Spotify_Logo_RGB_Black.png'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
@@ -143,6 +146,60 @@ function MeetingScheduler() {
       >
         <Button className="mt-4 flex-none">Schedule</Button>
       </Link>
+    </div>
+  )
+}
+
+function Activity() {
+  const [data, setData] = useState(null)
+  const [isLoading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch('https://trakker.fly.dev/resources/spotify')
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data)
+        setLoading(false)
+      })
+  }, [])
+
+  if (isLoading) {
+    return (
+      <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+        <div>Loading...</div>
+        <p>{JSON.stringify(data, null, 2)}</p>
+      </div>
+    )
+  }
+
+  if (!data) {
+    return (
+      <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+        <h2 className="flex items-center space-x-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+          <Image src={logoSpotify} alt="" className="h-8 w-24" unoptimized />
+          <span className="text-gray-500">Currently not listening</span>
+        </h2>
+      </div>
+    )
+  }
+
+  return (
+    <div className="rounded-2xl border border-zinc-100 p-2 dark:border-zinc-700/40">
+      <h2 className="flex items-center space-x-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        <img
+          src={data.trackImageUrl}
+          alt={data.trackTitle}
+          className="h-16 w-16 rounded-md"
+          unoptimized
+        />
+        <div className="relative">
+          <p className="text-xs text-gray-400 ">
+            Currently listening on Spotify
+          </p>
+          <p className="w-64 truncate text-gray-500">{data.albumName}</p>
+          <p className="text-clip text-gray-600">{data.trackTitle}</p>
+        </div>
+      </h2>
     </div>
   )
 }
@@ -340,6 +397,7 @@ export default function Home({ articles }) {
             {/* <Newsletter /> */}
             <MeetingScheduler />
             <Resume />
+            <Activity />
           </div>
         </div>
       </Container>
