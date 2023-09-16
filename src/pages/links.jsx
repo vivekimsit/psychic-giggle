@@ -1,24 +1,5 @@
 import Head from 'next/head'
-import Link from 'next/link'
-
-const links = [
-  {
-    key: 'Github',
-    value: (
-      <MyLink href="https://github.com/vivekimsit">
-        https://github.com/vivekimsit
-      </MyLink>
-    ),
-  },
-  {
-    key: 'VSCode Extensions',
-    value: (
-      <MyLink href="https://github.com/stars/vivekimsit/lists/vscode-extensions">
-        https://github.com/stars/vivekimsit/lists/vscode-extensions
-      </MyLink>
-    ),
-  },
-]
+import links from '@/data/links.json'
 
 export default function Links() {
   return (
@@ -60,30 +41,32 @@ export default function Links() {
                     </tr>
                   </thead>
                   <tbody>
-                    {links.map((link, personIdx) => (
-                      <tr key={link.key}>
-                        <td
-                          className={classNames(
-                            personIdx !== links.length - 1
-                              ? 'border-b border-gray-200'
-                              : '',
-                            'whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8'
-                          )}
-                        >
-                          {link.key}
-                        </td>
-                        <td
-                          className={classNames(
-                            personIdx !== links.length - 1
-                              ? 'border-b border-gray-200'
-                              : '',
-                            'hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell'
-                          )}
-                        >
-                          {link.value}
-                        </td>
-                      </tr>
-                    ))}
+                    {links
+                      .filter((link) => !link.private)
+                      .map((link, personIdx) => (
+                        <tr key={link.key}>
+                          <td
+                            className={classNames(
+                              personIdx !== links.length - 1
+                                ? 'border-b border-gray-200'
+                                : '',
+                              'whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8'
+                            )}
+                          >
+                            {link.key}
+                          </td>
+                          <td
+                            className={classNames(
+                              personIdx !== links.length - 1
+                                ? 'border-b border-gray-200'
+                                : '',
+                              'hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell'
+                            )}
+                          >
+                            {link.value}
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>
