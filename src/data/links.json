@@ -68,5 +68,10 @@
     "key": "joyofreact",
     "value": "https://www.joyofreact.com/",
     "private": false
+  },
+  {
+    "key": "sysdesign",
+    "value": "https://gist.github.com/vivekimsit/75245e4eb197660257738c46dded079b",
+    "private": true
   }
 ]
