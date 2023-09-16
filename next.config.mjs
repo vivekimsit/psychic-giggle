@@ -25,6 +25,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/github',
+        destination: 'https://github.com/vivekimsit',
+        permanent: true,
+      },
+      {
         source: '/resume',
         destination:
           'https://drive.google.com/file/d/1SGRrQuEpDRzAjbFSWO1TfX7H7LSanng5/view?usp=sharing',
