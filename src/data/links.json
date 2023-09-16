@@ -33,5 +33,35 @@
     "key": "linkedin",
     "value": "https://www.linkedin.com/in/vivekpoddar/",
     "private": true
+  },
+  {
+    "key": "uptime",
+    "value": "https://uptime.is/",
+    "private": false
+  },
+  {
+    "key": "gossip",
+    "value": "https://flopezluis.github.io/gossip-simulator",
+    "private": false
+  },
+  {
+    "key": "colors",
+    "value": "https://coolors.co/",
+    "private": false
+  },
+  {
+    "key": "regex",
+    "value": "https://regex101.com/",
+    "private": false
+  },
+  {
+    "key": "emoji",
+    "value": "https://emojityper.com/",
+    "private": false
+  },
+  {
+    "key": "joyofreact",
+    "value": "https://www.joyofreact.com/",
+    "private": false
   }
 ]
