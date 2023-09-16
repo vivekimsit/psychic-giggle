@@ -20,29 +20,6 @@ const nextConfig = {
       destination: value,
       permanent: true,
     }))
-    // return [
-    //   {
-    //     source: '/cal',
-    //     destination: 'https://cal.com/vivek-poddar/30min',
-    //     permanent: true,
-    //   },
-    //   {
-    //     source: '/roadmaps',
-    //     destination: 'https://roadmap.sh',
-    //     permanent: true,
-    //   },
-    //   {
-    //     source: '/github',
-    //     destination: 'https://github.com/vivekimsit',
-    //     permanent: true,
-    //   },
-    //   {
-    //     source: '/resume',
-    //     destination:
-    //       'https://drive.google.com/file/d/1SGRrQuEpDRzAjbFSWO1TfX7H7LSanng5/view?usp=sharing',
-    //     permanent: true,
-    //   },
-    // ]
   },
   async rewrites() {
     return [

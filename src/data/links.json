@@ -18,5 +18,20 @@
     "key": "resume",
     "value": "https://drive.google.com/file/d/1SGRrQuEpDRzAjbFSWO1TfX7H7LSanng5/view?usp=sharing",
     "private": true
+  },
+  {
+    "key": "BigO",
+    "value": "https://www.bigocheatsheet.com/",
+    "private": false
+  },
+  {
+    "key": "Codereview",
+    "value": "https://mtlynch.io/tags/code-review/",
+    "private": false
+  },
+  {
+    "key": "linkedin",
+    "value": "https://www.linkedin.com/in/vivekpoddar/",
+    "private": true
   }
 ]
