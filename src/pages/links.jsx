@@ -63,7 +63,7 @@ export default function Links() {
                               'hidden whitespace-nowrap px-3 py-4 text-sm text-gray-500 sm:table-cell'
                             )}
                           >
-                            {link.value}
+                            <MyLink href={link.value}>{link.value}</MyLink>
                           </td>
                         </tr>
                       ))}
