@@ -2,7 +2,7 @@ import nextMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
 import rehypePrism from '@mapbox/rehype-prism'
 
-import links from '@/data/links.json'
+import links from './src/data/links.json' assert { type: 'json' }
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -16,7 +16,7 @@ const nextConfig = {
   },
   async redirects() {
     return links.map(({ key, value }) => ({
-      source: key,
+      source: `/${key.toLowerCase().replace(/ /g, '-')}(/)?`,
       destination: value,
       permanent: true,
     }))
