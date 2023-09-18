@@ -78,5 +78,10 @@
     "key": "bread",
     "value": "https://www.youtube.com/watch?v=IsU4dGaQcco",
     "private": false
+  },
+  {
+    "key": "arcnotes",
+    "value": "https://architecturenotes.co/newsletter/",
+    "private": false
   }
 ]
