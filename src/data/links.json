@@ -83,5 +83,10 @@
     "key": "arcnotes",
     "value": "https://architecturenotes.co/newsletter/",
     "private": false
+  },
+  {
+    "key": "gdrive",
+    "value": "https://drive.google.com/drive/folders/1j5eaMP5NclfpXyEpJU99kWkyRvVnUULA",
+    "private": true
   }
 ]
