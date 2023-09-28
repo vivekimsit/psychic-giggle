@@ -88,5 +88,10 @@
     "key": "gdrive",
     "value": "https://drive.google.com/drive/folders/1j5eaMP5NclfpXyEpJU99kWkyRvVnUULA",
     "private": true
+  },
+  {
+    "key": "gdrive",
+    "value": "https://docs.google.com/spreadsheets/d/1IMZJ_E-4PCncqlTqBsLXC7CY1ReMWzzDXXbgxUHGm8M",
+    "private": true
   }
 ]
