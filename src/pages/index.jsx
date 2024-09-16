@@ -155,7 +155,7 @@ function Activity() {
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('https://trakker.fly.dev/resources/spotify')
+    fetch('https://trakker-app.fly.dev/resources/spotify/now-playing')
       .then((res) => res.json())
       .then((data) => {
         setData(data)
