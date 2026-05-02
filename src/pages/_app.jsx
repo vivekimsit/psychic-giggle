@@ -13,6 +13,9 @@ function usePrevious(value) {
     ref.current = value
   }, [value])
 
+  // The canonical usePrevious pattern reads ref.current during render to
+  // expose the prior commit's value; new react-hooks/refs rule flags this.
+  // eslint-disable-next-line react-hooks/refs
   return ref.current
 }
 
