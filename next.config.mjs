@@ -1,6 +1,4 @@
 import nextMDX from '@next/mdx'
-import remarkGfm from 'remark-gfm'
-import rehypePrism from '@mapbox/rehype-prism'
 
 import links from './src/data/links.json' with { type: 'json' }
 
@@ -12,7 +10,12 @@ const nextConfig = {
     scrollRestoration: true,
   },
   images: {
-    domains: ['bright-kringle-122bbb.netlify.app'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'bright-kringle-122bbb.netlify.app',
+      },
+    ],
   },
   async redirects() {
     return links.map(({ key, value }) => ({
@@ -34,8 +37,8 @@ const nextConfig = {
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypePrism],
+    remarkPlugins: [['remark-gfm']],
+    rehypePlugins: [['@mapbox/rehype-prism']],
   },
 })
 
