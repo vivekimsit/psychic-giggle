@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm outdated *)",
+      "Bash(git checkout *)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(npx --yes @tailwindcss/upgrade@latest)",
+      "Bash(npx --yes @tailwindcss/upgrade@latest --force)",
+      "Bash(npm view *)",
+      "Bash(npx prettier *)",
+      "Bash(git reset *)",
+      "Bash(curl -sf http://localhost:3000/ -o /dev/null -w \"home: %{http_code}\\\\n\")",
+      "Bash(curl -sf http://localhost:3000/articles -o /dev/null -w \"articles: %{http_code}\\\\n\")",
+      "Bash(curl -sf http://localhost:3000/articles/bit-array -o /dev/null -w \"mdx article: %{http_code}\\\\n\")",
+      "Bash(kill %1)",
+      "Bash(pkill -f \"next dev\")"
+    ]
+  }
+}
