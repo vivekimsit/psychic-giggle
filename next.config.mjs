@@ -2,7 +2,7 @@ import nextMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
 import rehypePrism from '@mapbox/rehype-prism'
 
-import links from './src/data/links.json' assert { type: 'json' }
+import links from './src/data/links.json' with { type: 'json' }
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
