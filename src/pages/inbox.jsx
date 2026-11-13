@@ -114,8 +114,7 @@ export default function InboxPage() {
       <main className="mx-auto max-w-2xl px-6 py-12">
         <h1 className="mb-2 text-2xl font-semibold">Inbox</h1>
         <p className="mb-6 text-sm text-zinc-500">
-          Captures append to <code>vivek-vault/00-Inbox/inbox.md</code>. Drained
-          during weekly review.
+          Captures land in your vault Inbox. Drained during weekly review.
         </p>
         <form onSubmit={onSubmit} className="space-y-4">
           <input
