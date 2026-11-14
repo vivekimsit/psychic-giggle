@@ -1,12 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import clsx from 'clsx'
 
-import { Button } from '@/components/Button'
-import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import {
   GitHubIcon,
@@ -14,71 +11,42 @@ import {
   LinkedInIcon,
   TwitterIcon,
 } from '@/components/SocialIcons'
-import logoSalesforce from '@/images/logos/salesforce.jpeg'
-import logoEBI from '@/images/logos/ebi.jpeg'
-import logoGoogle from '@/images/logos/google.jpeg'
-import logoAmazon from '@/images/logos/amazon.jpg'
-import logoSpotify from '@/images/logos/Spotify_Logo_RGB_Black.png'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
+import portraitImage from '@/images/portrait.jpg'
 import { formatDate } from '@/lib/formatDate'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 
-function MailIcon(props) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path
-        d="M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
-        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
-      />
-      <path
-        d="m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6"
-        className="stroke-zinc-400 dark:stroke-zinc-500"
-      />
-    </svg>
-  )
-}
+const DEATH_PROJECT_URL = 'https://iwasweak.com/death'
 
-function BriefcaseIcon(props) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path
-        d="M2.75 9.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
-        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
-      />
-      <path
-        d="M3 14.25h6.249c.484 0 .952-.002 1.316.319l.777.682a.996.996 0 0 0 1.316 0l.777-.682c.364-.32.832-.319 1.316-.319H21M8.75 6.5V4.75a2 2 0 0 1 2-2h2.5a2 2 0 0 1 2 2V6.5"
-        className="stroke-zinc-400 dark:stroke-zinc-500"
-      />
-    </svg>
-  )
-}
+const SOCIAL = [
+  {
+    href: 'https://twitter.com/vivekimsit',
+    label: 'Twitter',
+    icon: TwitterIcon,
+  },
+  {
+    href: 'https://github.com/vivekimsit',
+    label: 'GitHub',
+    icon: GitHubIcon,
+  },
+  {
+    href: 'https://www.linkedin.com/in/vivekpoddar',
+    label: 'LinkedIn',
+    icon: LinkedInIcon,
+  },
+  {
+    href: 'https://instagram.com',
+    label: 'Instagram',
+    icon: InstagramIcon,
+  },
+]
 
-function ArrowDownIcon(props) {
+function ArrowRightIcon(props) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
       <path
-        d="M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5"
+        d="M6.5 3.5 11 8l-4.5 4.5"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -87,257 +55,170 @@ function ArrowDownIcon(props) {
   )
 }
 
-function Article({ article }) {
+function SectionLabel({ children, className = '' }) {
   return (
-    <Card as="article">
-      <Card.Title href={`/articles/${article.slug}`}>
-        {article.title}
-      </Card.Title>
-      <Card.Eyebrow as="time" dateTime={article.date} decorate>
-        {formatDate(article.date)}
-      </Card.Eyebrow>
-      <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
-    </Card>
-  )
-}
-
-function SocialLink({ icon: Icon, ...props }) {
-  return (
-    <Link className="group -m-1 p-1" {...props}>
-      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
-    </Link>
-  )
-}
-
-function CalDotComLink() {
-  return (
-    <Link
-      href="https://cal.com"
-      className="group -m-1 p-1"
-      rel="noopener noreferrer"
-      target="_blank"
+    <h2
+      className={`text-[11px] font-semibold tracking-[0.2em] text-zinc-500 uppercase dark:text-neutral-500 ${className}`}
     >
-      <img
-        src="https://cal.com/favicon.ico"
-        alt="Cal.com"
-        className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300"
-      />
-    </Link>
+      {children}
+    </h2>
   )
 }
 
-function MeetingScheduler() {
+function PulseDot() {
   return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <CalDotComLink />
-        <span className="ml-3">Schedule a meeting</span>
-      </h2>
-      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Clicking below will take you to Cal.com, where you can schedule a
-        meeting.
-      </p>
-      <Link
-        href="cal"
-        className="group -m-1 p-1"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <Button className="mt-4 flex-none">Schedule</Button>
-      </Link>
+    <span className="relative flex h-2 w-2" aria-hidden="true">
+      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+    </span>
+  )
+}
+
+// PixelPortrait — placeholder for a future data-pulsating animation.
+// Swap the <Image> for a canvas / WebGL layer when the animation ships.
+function PixelPortrait() {
+  return (
+    <div className="relative h-56 w-56 overflow-hidden bg-neutral-100 ring-1 ring-zinc-900/10 sm:h-64 sm:w-64 dark:bg-neutral-900 dark:ring-white/10">
+      <Image
+        src={portraitImage}
+        alt="Vivek Poddar"
+        priority
+        sizes="(min-width: 640px) 256px, 224px"
+        className="h-full w-full object-cover contrast-125 grayscale"
+        style={{ imageRendering: 'pixelated' }}
+      />
     </div>
   )
 }
 
-function Activity() {
+function Hero() {
+  return (
+    <section className="flex flex-col items-center text-center">
+      <PixelPortrait />
+      <h1 className="mt-8 text-5xl font-bold tracking-tight text-zinc-900 sm:text-6xl dark:text-neutral-50">
+        Vivek Poddar
+      </h1>
+      <p className="mt-4 text-sm text-zinc-500 dark:text-neutral-500">
+        Existential Technologist / Lead Engineer (ex-Salesforce, Amazon, Google)
+      </p>
+      <div className="-mx-1 mt-6 flex items-center gap-1">
+        {SOCIAL.map(({ href, label, icon: Icon }) => (
+          <Link
+            key={href}
+            href={href}
+            aria-label={label}
+            rel="noopener noreferrer"
+            target="_blank"
+            className="rounded-md p-1.5 transition-colors duration-200 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+          >
+            <Icon className="h-4 w-4 fill-zinc-500 dark:fill-neutral-400" />
+          </Link>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function Philosophy() {
+  return (
+    <section className="mx-auto max-w-2xl text-center">
+      <SectionLabel>Philosophy</SectionLabel>
+      <blockquote className="mt-6 font-serif text-3xl leading-[1.15] tracking-tight text-zinc-900 sm:text-4xl dark:text-neutral-50">
+        <span className="block font-bold">Memento mori.</span>
+        <span className="mt-4 block">
+          Embrace your end. Make every second count.
+        </span>
+        <span className="mt-4 block text-2xl text-zinc-500 italic sm:text-3xl dark:text-neutral-500">
+          (I was weak)
+        </span>
+      </blockquote>
+      <Link
+        href={DEATH_PROJECT_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group mt-10 inline-flex items-center gap-2 border border-zinc-400 px-4 py-2.5 text-[11px] font-semibold tracking-[0.2em] text-zinc-900 uppercase transition-colors duration-150 ease-out hover:bg-zinc-900 hover:text-white dark:border-neutral-600 dark:text-neutral-100 dark:hover:border-neutral-100 dark:hover:bg-neutral-100 dark:hover:text-neutral-900"
+      >
+        Explore the Death Project
+        <ArrowRightIcon className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+      </Link>
+    </section>
+  )
+}
+
+function ArticleRow({ article }) {
+  return (
+    <Link
+      href={`/articles/${article.slug}`}
+      className="group -mx-3 flex items-baseline gap-4 rounded-md px-3 py-3 transition-colors duration-150 ease-out hover:bg-neutral-100/50 dark:hover:bg-neutral-900/30"
+    >
+      <span className="min-w-0 flex-1 truncate text-sm text-zinc-500 transition-colors duration-150 ease-out group-hover:text-zinc-900 dark:text-neutral-400 dark:group-hover:text-neutral-100">
+        {article.title}
+      </span>
+      <time
+        dateTime={article.date}
+        className="flex-none text-xs tabular-nums text-zinc-400 dark:text-neutral-500"
+      >
+        {formatDate(article.date)}
+      </time>
+    </Link>
+  )
+}
+
+function Writing({ articles }) {
+  return (
+    <section>
+      <SectionLabel>Writing</SectionLabel>
+      <div className="mt-4 divide-y divide-neutral-200 dark:divide-neutral-800">
+        {articles.map((article) => (
+          <ArticleRow key={article.slug} article={article} />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function UtilityFooter() {
   const [data, setData] = useState(null)
-  const [isLoading, setLoading] = useState(true)
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     fetch('https://trakker-app.fly.dev/resources/spotify/now-playing')
       .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-        setLoading(false)
+      .then((d) => {
+        setData(d)
+        setLoaded(true)
       })
+      .catch(() => setLoaded(true))
   }, [])
 
-  if (isLoading) {
-    return (
-      <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-        <div>Loading...</div>
-      </div>
-    )
-  }
-
-  if (!data) {
-    return (
-      <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-        <h2 className="flex items-center space-x-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-          <Image src={logoSpotify} alt="" className="h-8 w-24" unoptimized />
-          <span className="text-gray-500">Currently not listening</span>
-        </h2>
-      </div>
-    )
-  }
-
   return (
-    <div className="rounded-2xl border border-zinc-100 p-2 dark:border-zinc-700/40">
-      <h2 className="flex items-center space-x-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <img
-          src={data.trackImageUrl}
-          alt={data.trackTitle}
-          className="h-16 w-16 rounded-md"
-          unoptimized
-        />
-        <div className="relative">
-          <p className="text-xs text-gray-400">
-            Currently listening on Spotify
-          </p>
-          <p className="w-64 truncate text-gray-500">{data.albumName}</p>
-          <p className="text-clip text-gray-600">{data.trackTitle}</p>
-        </div>
-      </h2>
-    </div>
-  )
-}
-
-function Newsletter() {
-  return (
-    <form
-      action="/thank-you"
-      className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
-    >
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <MailIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Stay up to date</span>
-      </h2>
-      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Get notified when I publish something new, and unsubscribe at any time.
-      </p>
-      <div className="mt-6 flex">
-        <input
-          type="email"
-          placeholder="Email address"
-          aria-label="Email address"
-          required
-          className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 focus:outline-none sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10"
-        />
-        <Button type="submit" className="ml-4 flex-none">
-          Join
-        </Button>
-      </div>
-    </form>
-  )
-}
-
-function Resume() {
-  let resume = [
-    {
-      company: 'Salesforce',
-      title: 'Tech Lead',
-      logo: logoSalesforce,
-      start: '2022',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear(),
-      },
-    },
-    {
-      company: 'Amazon',
-      title: 'Software Engineer',
-      logo: logoAmazon,
-      start: '2019',
-      end: '2021',
-    },
-    {
-      company: 'EMBL EBI',
-      title: 'Software Engineer',
-      logo: logoEBI,
-      start: '2017',
-      end: '2019',
-    },
-    {
-      company: 'Google',
-      title: 'Consultant',
-      logo: logoGoogle,
-      start: '2013',
-      end: '2017',
-    },
-  ]
-
-  return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <BriefcaseIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Work</span>
-      </h2>
-      <ol className="mt-6 space-y-4">
-        {resume.map((role, roleIndex) => (
-          <li key={roleIndex} className="flex gap-4">
-            <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md ring-1 shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
-            </div>
-            <dl className="flex flex-auto flex-wrap gap-x-2">
-              <dt className="sr-only">Company</dt>
-              <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                {role.company}
-              </dd>
-              <dt className="sr-only">Role</dt>
-              <dd className="text-xs text-zinc-500 dark:text-zinc-400">
-                {role.title}
-              </dd>
-              <dt className="sr-only">Date</dt>
-              <dd
-                className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
-                aria-label={`${role.start.label ?? role.start} until ${
-                  role.end.label ?? role.end
-                }`}
-              >
-                <time dateTime={role.start.dateTime ?? role.start}>
-                  {role.start.label ?? role.start}
-                </time>{' '}
-                <span aria-hidden="true">—</span>{' '}
-                <time dateTime={role.end.dateTime ?? role.end}>
-                  {role.end.label ?? role.end}
-                </time>
-              </dd>
-            </dl>
-          </li>
-        ))}
-      </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
-        Download CV
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button>
-    </div>
-  )
-}
-
-function Photos() {
-  let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
-
-  return (
-    <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
-          <div
-            key={image.src}
-            className={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800',
-              rotations[imageIndex % rotations.length],
-            )}
-          >
-            <Image
-              src={image}
-              alt=""
-              sizes="(min-width: 640px) 18rem, 11rem"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-        ))}
-      </div>
+    <div className="flex items-center gap-4 text-xs text-zinc-500 dark:text-neutral-500">
+      <span className="flex items-center gap-1.5">
+        <PulseDot />
+        Available for chats
+      </span>
+      <Link
+        href="https://cal.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-zinc-700 transition-colors duration-150 ease-out hover:text-zinc-950 dark:text-neutral-300 dark:hover:text-neutral-50"
+      >
+        Book →
+      </Link>
+      <span className="ml-auto flex min-w-0 items-center gap-1.5">
+        <span className="flex-none text-[10px] font-semibold tracking-[0.15em] text-zinc-400 uppercase dark:text-neutral-600">
+          Now
+        </span>
+        {!loaded ? (
+          <span className="text-zinc-400 dark:text-neutral-600">…</span>
+        ) : data ? (
+          <span className="min-w-0 truncate text-zinc-700 dark:text-neutral-300">
+            {data.trackTitle}
+          </span>
+        ) : (
+          <span>Silence</span>
+        )}
+      </span>
     </div>
   )
 }
@@ -346,59 +227,23 @@ export default function Home({ articles }) {
   return (
     <>
       <Head>
-        <title>Vivek Poddar - Software Engineer.</title>
+        <title>Vivek Poddar — Existential Technologist</title>
         <meta
           name="description"
-          content="I’m Vivek, a software engineer based in India."
+          content="Vivek Poddar — engineer based in India. Memento mori."
         />
       </Head>
-      <Container className="mt-9">
-        <div className="max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Software Engineer.
-          </h1>
-          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Vivek, a software engineer based in India.
-          </p>
-          <div className="mt-6 flex gap-6">
-            <SocialLink
-              href="https://twitter.com/vivekimsit"
-              aria-label="Follow on Twitter"
-              icon={TwitterIcon}
-            />
-            <SocialLink
-              href="https://instagram.com"
-              aria-label="Follow on Instagram"
-              icon={InstagramIcon}
-            />
-            <SocialLink
-              href="https://github.com/vivekimsit"
-              aria-label="Follow on GitHub"
-              icon={GitHubIcon}
-            />
-            <SocialLink
-              href="https://www.linkedin.com/in/vivekpoddar"
-              aria-label="Follow on LinkedIn"
-              icon={LinkedInIcon}
-            />
-          </div>
-        </div>
+      <Container className="mt-12 sm:mt-20">
+        <Hero />
       </Container>
-      {/* <Photos /> */}
-      <Container className="mt-24 md:mt-28">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16">
-            {articles.map((article) => (
-              <Article key={article.slug} article={article} />
-            ))}
-          </div>
-          <div className="space-y-10 lg:pl-16 xl:pl-24">
-            {/* <Newsletter /> */}
-            <MeetingScheduler />
-            <Resume />
-            <Activity />
-          </div>
-        </div>
+      <Container className="mt-20 sm:mt-28">
+        <Philosophy />
+      </Container>
+      <Container className="mt-20 sm:mt-28">
+        <Writing articles={articles} />
+      </Container>
+      <Container className="mt-16 mb-8 sm:mt-24">
+        <UtilityFooter />
       </Container>
     </>
   )

@@ -17,7 +17,25 @@
       "Bash(curl -sf http://localhost:3000/articles -o /dev/null -w \"articles: %{http_code}\\\\n\")",
       "Bash(curl -sf http://localhost:3000/articles/bit-array -o /dev/null -w \"mdx article: %{http_code}\\\\n\")",
       "Bash(kill %1)",
-      "Bash(pkill -f \"next dev\")"
+      "Bash(pkill -f \"next dev\")",
+      "Bash(git -C ~/dev/vivek-vault init -b main)",
+      "Bash(git -C ~/dev/vivek-vault add .)",
+      "Bash(git -C '~/dev/vivek-vault' commit -m ' *)",
+      "Bash(gh repo *)",
+      "Bash(git -C /Users/vivekpoddar/dev/blog-v2 status --short -- SECOND_BRAIN_PLAN.md)",
+      "Bash(git -C /Users/vivekpoddar/dev/blog-v2 log --oneline -5 -- SECOND_BRAIN_PLAN.md)",
+      "Bash(git -C /Users/vivekpoddar/dev/blog-v2 status --short)",
+      "Bash(git -C /Users/vivekpoddar/dev/vivek-vault add README.md)",
+      "Bash(git -C /Users/vivekpoddar/dev/vivek-vault commit -m ' *)",
+      "Bash(git -C /Users/vivekpoddar/dev/vivek-vault push)",
+      "Bash(node *)",
+      "Bash(npx eslint *)",
+      "Bash(git -C /Users/vivekpoddar/dev/blog-v2 add src/lib/vault-inbox.js src/pages/api/inbox.js src/pages/inbox.jsx package.json package-lock.json .env.example)",
+      "Bash(git -C /Users/vivekpoddar/dev/blog-v2 diff --cached --stat)",
+      "Bash(git -C /Users/vivekpoddar/dev/blog-v2 commit -m ' *)",
+      "Bash(git -C /Users/vivekpoddar/dev/blog-v2 log --oneline -1)",
+      "Bash(git -C /Users/vivekpoddar/dev/blog-v2 remote -v)",
+      "Bash(git *)"
     ]
   }
 }

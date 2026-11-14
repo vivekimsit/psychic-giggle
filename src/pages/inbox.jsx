@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 
+const KNOWLEDGE_BASE_URL =
+  process.env.NEXT_PUBLIC_KNOWLEDGE_BASE_URL ||
+  'https://digital-knowledge-web.vercel.app'
+
 function MicIcon({ className }) {
   return (
     <svg
@@ -116,6 +120,22 @@ export default function InboxPage() {
         <p className="mb-6 text-sm text-zinc-500">
           Captures land in your vault Inbox. Drained during weekly review.
         </p>
+        <a
+          href={KNOWLEDGE_BASE_URL}
+          className="mb-8 flex items-center justify-between gap-4 rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm transition hover:border-zinc-300 hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900/50 dark:hover:border-zinc-600 dark:hover:bg-zinc-900"
+        >
+          <span>
+            <span className="font-medium text-zinc-900 dark:text-zinc-100">
+              Knowledge base
+            </span>
+            <span className="mt-0.5 block text-zinc-500 dark:text-zinc-400">
+              Search and read notes anywhere (Vercel login).
+            </span>
+          </span>
+          <span className="shrink-0 text-zinc-400" aria-hidden="true">
+            →
+          </span>
+        </a>
         <form onSubmit={onSubmit} className="space-y-4">
           <input
             type="password"
